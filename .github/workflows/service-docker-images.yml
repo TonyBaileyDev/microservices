@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: ['about']
+        service: ['about','quote']
 
     steps:
     - uses: actions/checkout@v3
