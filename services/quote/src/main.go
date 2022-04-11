@@ -12,6 +12,18 @@ var Quote = "Optimism is an occupational hazard of programming: feedback is the 
 func main() {
 	r := mux.NewRouter()
 
+	r.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "healthy")
+	}).Methods("GET")
+
+	r.HandleFunc("/health/readiness", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "healthy")
+	}).Methods("GET")
+
+	r.HandleFunc("/health/liveness", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "healthy")
+	}).Methods("GET")
+
 	r.HandleFunc("/quote", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, Quote)
 	}).Methods("GET")
